@@ -1,98 +1,98 @@
 [
     {
         "title": "Quiz 1",
-        "content": "What is My Name 1?",
+        "content": "What is My First Name 1?",
         "Answers": [
             "Khaled1",
             "Mohamed1",
             "Saad1",
             "Galal1"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Khaled1",
         "category": "HTML"
     },
     {
         "title": "Quiz 2",
-        "content": "What is My Name 2?",
+        "content": "What is My Second Name 2?",
         "Answers": [
             "Khaled2",
             "Mohamed2",
             "Saad2",
             "Galal2"
         ],
-        "rightAnswer": "answer2",
+        "rightAnswer": "Mohamed2",
         "category": "HTML"
     },
     {
         "title": "Quiz 3",
-        "content": "What is My Name 3?",
+        "content": "What is My Third Name 3?",
         "Answers": [
             "Khaled3",
             "Mohamed3",
             "Saad3",
             "Galal3"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Saad3",
         "category": "HTML"
     },
     {
         "title": "Quiz 4",
-        "content": "What is My Name 4?",
+        "content": "What is My Fourth Name 4?",
         "Answers": [
             "Khaled4",
             "Mohamed4",
             "Saad4",
             "Galal4"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Galal4",
         "category": "HTML"
     },
     {
         "title": "Quiz 5",
-        "content": "What is My Name 5?",
+        "content": "What is My First Name 5?",
         "Answers": [
             "Khaled5",
             "Mohamed5",
             "Saad5",
             "Galal5"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Khaled5",
         "category": "HTML"
     },
     {
         "title": "Quiz 6",
-        "content": "What is My Name 6?",
+        "content": "What is My Second Name 6?",
         "Answers": [
             "Khaled6",
             "Mohamed6",
             "Saad6",
             "Galal6"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Mohamed6",
         "category": "HTML"
     },
     {
         "title": "Quiz 7",
-        "content": "What is My Name 7?",
+        "content": "What is My Third Name 7?",
         "Answers": [
             "Khaled7",
             "Mohamed7",
             "Saad7",
             "Galal7"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Saad7",
         "category": "HTML"
     },
     {
         "title": "Quiz 8",
-        "content": "What is My Name 8?",
+        "content": "What is My Fourth Name 8?",
         "Answers": [
             "Khaled8",
             "Mohamed8",
             "Saad8",
             "Galal8"
         ],
-        "rightAnswer": "answer1",
+        "rightAnswer": "Galal8",
         "category": "HTML"
     }
 ]
