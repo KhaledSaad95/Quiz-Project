@@ -18,18 +18,32 @@ let existData = data.then((res) => res.json());
 
 existData.then((res) => {
     let resp = [];
+    let resAnswers = [];
     while (resp.length < res.length) {
         let index = Math.floor(Math.random() * res.length);
         if ((resp.indexOf(res[index]) === -1) && (resp.lastIndexOf(res[index]) === -1)) {
             resp.push(res[index]);
         }
     }
+
+
+    while (resAnswers.length < resp[0]["Answers"].length) {
+        let index = Math.floor(Math.random() * resp[0]["Answers"].length);
+        if ((resAnswers.indexOf(resp[0]["Answers"][index]) === -1) && (resAnswers.lastIndexOf(resp[0]["Answers"][index]) === -1)) {
+            resAnswers.push(resp[0]["Answers"][index]);
+        }
+    }
+    console.log(resAnswers)
+
+
+
+
     let z = 0;
     let score = 0;
     let innerInterval;
 
     for (let i = 0; i < answers.length; i++) {
-        answerLabels[i].textContent = `${resp[0]["Answers"][i]}`;
+        answerLabels[i].textContent = `${resAnswers[i]}`;
     };
 
     for (let y = 1; y <= resp.length; y++) {
@@ -70,13 +84,18 @@ existData.then((res) => {
 
 
     let mainFunction = function () {
+        let resAnswers = [];
         // check the answer 
         if (z < resp.length) {
             const selected = document.querySelector('input[name="answers"]:checked');
-            if (selected && selected.value === resp[z]["rightAnswer"]) {
-                console.log("right");
-                score++;
+            if (selected) {
+                const selectedLabel = document.querySelector(`label[for="${selected.id}"]`);
+                if (selectedLabel && selectedLabel.textContent === resp[z]["rightAnswer"]) {
+                    console.log("right");
+                    score++;
+                }
             }
+
             z++;
             if (z === resp.length) {
                 question.innerHTML = "";
@@ -99,6 +118,13 @@ existData.then((res) => {
                     question.appendChild(newSpan);
                 }
             } else {
+                // make the answers appears random sort
+                while (resAnswers.length < resp[z]["Answers"].length) {
+                    let index = Math.floor(Math.random() * resp[z]["Answers"].length);
+                    if ((resAnswers.indexOf(resp[z]["Answers"][index]) === -1) && (resAnswers.lastIndexOf(resp[z]["Answers"][index]) === -1)) {
+                        resAnswers.push(resp[z]["Answers"][index]);
+                    }
+                }
                 // Render Next Question
                 spanTitle.innerHTML = "";
                 spanTitle.appendChild(document.createTextNode(`${resp[z]["title"]}`));
@@ -110,7 +136,7 @@ existData.then((res) => {
                 bulletsSelect[z].setAttribute("checked", "");
                 for (let u = 0; u < answerLabels.length; u++) {
                     answerLabels[u].textContent = "";
-                    answerLabels[u].appendChild(document.createTextNode(`${resp[z]["Answers"][u]}`));
+                    answerLabels[u].appendChild(document.createTextNode(`${resAnswers[u]}`));
                 }
             }
             answers.forEach(a => a.checked = false);
@@ -122,16 +148,29 @@ existData.then((res) => {
     submit.onclick = function (e) {
         e.preventDefault();
         let mainFunction = function () {
-            const selected = document.querySelector('input[name="answers"]:checked');
-            if (selected.value === resp[z]["rightAnswer"]) {
-                console.log("right");
-                score++;
-            } else {
-                score;
-            };
 
+
+            const selected = document.querySelector('input[name="answers"]:checked');
+            if (selected) {
+                const selectedLabel = document.querySelector(`label[for="${selected.id}"]`);
+                if (selectedLabel && selectedLabel.textContent === resp[z]["rightAnswer"]) {
+                    console.log("right");
+                    score++;
+                } else {
+                    score;
+                };
+            }
             z += 1;
             if (z < resp.length) {
+                // make the answers appears random sort
+                let resAnswers = [];
+                while (resAnswers.length < resp[z]["Answers"].length) {
+                    let index = Math.floor(Math.random() * resp[z]["Answers"].length);
+                    if ((resAnswers.indexOf(resp[z]["Answers"][index]) === -1) && (resAnswers.lastIndexOf(resp[z]["Answers"][index]) === -1)) {
+                        resAnswers.push(resp[z]["Answers"][index]);
+                    }
+                }
+                console.log(resAnswers);
                 spanTitle.innerHTML = "";
                 spanTitle.appendChild(document.createTextNode(`${resp[z]["title"]}`));
                 spanContent.innerHTML = "";
@@ -143,7 +182,7 @@ existData.then((res) => {
 
                 for (let u = 0; u < answerLabels.length; u++) {
                     answerLabels[u].textContent = "";
-                    answerLabels[u].appendChild(document.createTextNode(`${resp[z]["Answers"][u]}`));
+                    answerLabels[u].appendChild(document.createTextNode(`${resAnswers[u]}`));
                 }
             } else {
                 question.innerHTML = "";
@@ -175,55 +214,3 @@ existData.then((res) => {
         tima = 10;
     }
 });
-
-// Problems
-
-// fix the selection of questions bullets [Done]
-// make question random and answers random
-// make the score count if i chose the answer and before press submit [Done]
-// make the bullet not checked till the questions is passed [Done]
-// make the timer reset if i press submit [Done]
-
-
-
-
-// arry.map((e, index) => {
-//     index = [Math.floor(Math.random() * arry.length)];
-//     if (!arry.indexOf(e[index])) {
-//         arry.push(e[index]);
-//     }
-//     return arry;
-//     // if (index) {
-
-//     //     return arry[index];
-//     // }
-// })
-
-
-// while (arry.length < arryIndex.length) {
-//     let index = Math.floor(Math.random() * arry.length);
-//     if (arry.indexOf(arry[index]) === -1) {
-//         arryIndex.push(arry[index]);
-//     }
-// }
-// let i = 0
-
-
-
-/*
-let arry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-let arryIndex = [];
-while (arryIndex.length < arry.length) {
-    let index = Math.floor(Math.random() * arry.length);
-    if ((arryIndex.indexOf(arry[index]) === -1) && (arryIndex.lastIndexOf(arry[index]) === -1)) {
-        arryIndex.push(arry[index]);
-    }
-}
-console.log(arryIndex)
-*/
-
-
-
-
-
-
